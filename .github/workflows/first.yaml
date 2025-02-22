@@ -6,14 +6,21 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
       - name: first-step
-        run: echo "Hello World!"
+        run: |
+          echo "Hello World!"
+          ls -ltra
+          pwd
+          cat README.md
 
-      - name: second-step
-        run: ls
+      # - name: second-step
+      #   run: ls
 
-      - name: third-step
-        run: pwd
+      # - name: third-step
+      #   run: pwd
 
-      - name: fourth-step
-        run: cat README.md
+      # - name: fourth-step
+      #   run: cat README.md
