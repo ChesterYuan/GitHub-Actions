@@ -11,5 +11,5 @@ jobs:
 
       - name: run Cowsay program
         run: |
-            chmod +x dragon script.sh
-            ./dragon script.sh
+            chmod +x dragon-script.sh
+            ./dragon-script.sh
