@@ -27,7 +27,6 @@ jobs:
           uses: actions/download-artifact@v4
           with:
             name: hello.txt
-            path: hello.txt
         - name: test file existence
           run: grep -i "hello world" hello.txt
 
@@ -39,7 +38,6 @@ jobs:
           uses: actions/download-artifact@v4
           with:
             name: hello.txt
-            path: hello.txt
         - name: read file   
           run: |
             cat hello.txt
