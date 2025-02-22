@@ -17,3 +17,5 @@ jobs:
       - name: Run cowsay
         run: |
           cowsay -f dragon "Hello World!" >> hello.txt
+          cat hello.txt
+          ls -ltra
