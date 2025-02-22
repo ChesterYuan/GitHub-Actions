@@ -9,7 +9,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: first-step
+      - name: steps
         run: |
           echo "Hello World!"
           ls -ltra
