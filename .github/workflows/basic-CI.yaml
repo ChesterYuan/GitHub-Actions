@@ -1,0 +1,46 @@
+name: basic-CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: run Cowsay program
+        run: |
+            chmod +x .github/workflows/dragon-script.sh
+            ./.github/workflows/dragon-script.sh
+      - name: upload file
+        uses: actions/upload-artifact@v4
+        with:
+            name: hello.txt
+            path: hello.txt
+  
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+        - name: download file
+          uses: actions/download-artifact@v4
+          with:
+            name: hello.txt
+            path: hello.txt
+        - name: test file existence
+          run: grep -i "hello world" hello.txt
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+        - name: download file
+          uses: actions/download-artifact@v4
+          with:
+            name: hello.txt
+            path: hello.txt
+        - name: read file   
+          run: |
+            cat hello.txt
+            ls -ltra

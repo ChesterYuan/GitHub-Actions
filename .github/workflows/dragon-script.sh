@@ -4,5 +4,3 @@ sudo apt-get update
 sudo apt-get install cowsay
 
 cowsay -f dragon "Hello World!" >> hello.txt
-cat hello.txt
-ls -ltra
