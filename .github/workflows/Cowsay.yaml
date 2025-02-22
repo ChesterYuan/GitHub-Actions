@@ -9,13 +9,5 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: Install Cowsay program
-        run: |
-          sudo apt-get update
-          sudo apt-get install cowsay
-
-      - name: Run cowsay
-        run: |
-          cowsay -f dragon "Hello World!" >> hello.txt
-          cat hello.txt
-          ls -ltra
+      - name: run Cowsay program
+        run: ./dragon script.sh
