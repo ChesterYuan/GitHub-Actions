@@ -11,16 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: docker build
-          run: echo docker build -t ${{ env.CONTAINER_REGISTRY }}/${{ env.USER_NAME}}/${{ env.IMAGE_NAME }}
+          run: echo docker build -t ${{ env.CONTAINER_REGISTRY }}/$DOCKER_USERNAME/$IMAGE_NAME:latest
 
         - name: docker login
           run: echo docker login --user=$DOCKER_USERNAME --password=${{ secrets.DOCKER_PASSWORD }}
 
         - name: docker publish
-          run: echo docker push ${{ env.CONTAINER_REGISTRY }}/${{ env.USER_NAME}}/${{ env.IMAGE_NAME }}
+          run: echo docker push ${{ env.CONTAINER_REGISTRY }}/$DOCKER_USERNAME/$IMAGE_NAME:latest
 
   deploy:
+    needs: docker
     runs-on: ubuntu-latest
     steps:
         - name: docker run
-          run: echo docker  run -p 80:80 ${{ env.CONTAINER_REGISTRY }}/${{ env.USER_NAME}}/${{ env.IMAGE_NAME }}
+          run: echo docker  run -p 80:80 ${{ env.CONTAINER_REGISTRY }}/$DOCKER_USERNAME/$IMAGE_NAME:latest
