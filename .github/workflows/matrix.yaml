@@ -1,0 +1,22 @@
+name: matrix-workflow
+
+on: push
+
+jobs:
+    Deploy:
+      strategy:
+        matrix:
+          os: [ubuntu-latest, windows-latest, macos-latest]
+          images: [hello-world, busybox]
+          exclude: 
+            - images: busybox
+              os: macos-latest
+      runs-on: ${{ matrix.os }}
+      steps:
+      - name: echo docker details
+        run: docker info
+      
+      - name: run images on ${{ matrix.os }}
+        run: docker run ${{ matrix.images }}
+        
+    
