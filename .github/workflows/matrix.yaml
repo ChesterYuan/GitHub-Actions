@@ -10,7 +10,7 @@ jobs:
           images: [hello-world, busybox]
           exclude: 
             - images: busybox
-              os: macos-latest
+              os: macos-latest, windows-latest
       runs-on: ${{ matrix.os }}
       steps:
       - name: echo docker details
