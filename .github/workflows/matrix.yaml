@@ -6,11 +6,11 @@ jobs:
     Deploy:
       strategy:
         matrix:
-          os: [ubuntu-latest, windows-latest, macos-latest]
+          os: [ubuntu-latest, windows-latest]
           images: [hello-world, busybox]
           exclude: 
             - images: busybox
-              os: macos-latest, windows-latest
+              os: macos-latest
       runs-on: ${{ matrix.os }}
       steps:
       - name: echo docker details
